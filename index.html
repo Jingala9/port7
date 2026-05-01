@@ -1,235 +1,405 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISHA ABBAS | LUXE PORTFOLIO</title>
-    
-    <!-- Fonts die de stijlen uit je foto's matchen (Playfair = Sleek/Vogue, Pinyon = Finesse) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Cinzel:wght@400;700&family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
-
+    <title>Aisha Abbas | Luxury Travel UGC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         :root {
-            --butter: #FDF5E6;
-            --cocoa: #3d2b1f;
-            --white: #ffffff;
-            --font-main: 'Playfair Display', serif; /* De "Vogue" look */
-            --font-script: 'Pinyon Script', cursive; /* De "Finesse" look */
+            --beige: #F5F5DC;
+            --cream: #FFFDD0;
+            --dark-brown: #3d2b1f;
+            --overlay: rgba(61, 43, 31, 0.15);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: var(--white);
-            color: var(--cocoa);
+            background-color: var(--cream);
+            color: var(--dark-brown);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
-        /* --- HERO --- */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        /* --- STICKY NAV --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 10%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 253, 208, 0.9);
+            padding: 1rem 10%;
+            backdrop-filter: blur(10px);
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('image_11.png') no-repeat center center/cover;
+            width: 100%;
+            background: linear-gradient(var(--overlay), var(--overlay)), url('image_27.png');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--white);
+            position: relative;
         }
 
         .hero h1 {
-            font-family: var(--font-main);
-            font-size: clamp(3rem, 12vw, 8rem);
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            font-weight: 400;
+            color: white;
+            font-size: clamp(3rem, 10vw, 6rem);
+            letter-spacing: 0.5rem;
         }
 
-        .hero p {
-            font-family: var(--font-script);
-            font-size: 2.5rem;
-            margin-top: -20px;
-        }
-
-        /* --- BRANDS SECTION (DE BUBBLES) --- */
-        .brands-section {
-            background-color: var(--butter);
-            padding: 100px 5%;
-            text-align: center;
-        }
-
-        .section-title {
-            font-family: var(--font-main);
-            font-size: 3rem;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-
-        .brands-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .brand-bubble {
-            width: 160px;
-            height: 160px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
+        /* --- ABOUT ME --- */
+        .about {
+            padding: 10rem 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
             align-items: center;
-            justify-content: center;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(61, 43, 31, 0.05);
-            transition: transform 0.4s ease;
         }
 
-        .brand-bubble:hover { transform: scale(1.1); }
-        .brand-bubble img { width: 100%; height: auto; object-fit: contain; }
+        .about-img {
+            width: 100%;
+            height: 600px;
+            background: url('image_28.png');
+            background-size: cover;
+            background-position: top center; /* Focuses on the top half as requested */
+            filter: sepia(20%);
+        }
 
-        /* --- VIDEO EXAMPLES (IPHONE FRAMES) --- */
-        .video-section {
-            padding: 100px 5%;
-            background: var(--white);
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* --- WHY UGC STATS --- */
+        .why-ugc {
+            background-color: var(--beige);
+            padding: 8rem 10%;
             text-align: center;
         }
 
-        .video-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 50px;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
         }
 
-        .iphone-frame {
-            width: 280px;
-            height: 570px;
-            background: #000;
-            border: 12px solid #1a1a1a;
-            border-radius: 40px;
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-brown);
+        }
+
+        /* --- PORTFOLIO (IPHONES) --- */
+        .portfolio-section {
+            padding: 8rem 10%;
+        }
+
+        .niche-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .iphone-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 8rem;
+        }
+
+        .iphone-main-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding-top: 5rem;
+        }
+
+        .iphone-mockup {
             position: relative;
+            width: 100%;
+            aspect-ratio: 9/19;
+            background: #1a1a1a;
+            border-radius: 2.5rem;
+            border: 8px solid #222;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
 
-        /* De inkeping (notch) bovenin de iPhone */
-        .iphone-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 25px;
-            background: #1a1a1a;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+        .iphone-mockup:hover {
+            transform: scale(1.05) rotate(-2deg);
             z-index: 10;
         }
 
-        .iphone-frame video, .iphone-frame img {
+        .iphone-mockup video, .iphone-mockup .placeholder {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .video-label {
-            margin-top: 20px;
-            font-family: 'Montserrat', sans-serif;
+        .placeholder {
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
             font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--cocoa);
         }
 
-        /* --- CONTACT --- */
-        footer {
-            background: var(--cocoa);
-            color: var(--butter);
-            padding: 100px 5%;
+        /* --- BRANDS --- */
+        .brands {
+            padding: 5rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(61, 43, 31, 0.1);
+        }
+
+        .brand-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            opacity: 0.7;
+        }
+
+        .brand-strip span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        /* --- SERVICES & RATES --- */
+        .rates {
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            padding: 8rem 10%;
+        }
+
+        .rate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .rate-card {
+            border: 1px solid rgba(255, 253, 208, 0.2);
+            padding: 3rem;
             text-align: center;
         }
 
-        .contact-cta {
-            font-family: var(--font-script);
-            font-size: 4rem;
-            margin-bottom: 20px;
+        .rate-card h4 { font-size: 2rem; margin-bottom: 1rem; }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            padding: 8rem 10%;
+            text-align: center;
         }
 
-        .email-link {
-            font-family: var(--font-main);
-            font-size: 1.5rem;
-            color: var(--butter);
+        .testimonial-item {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .stars { color: #d4af37; margin-bottom: 1rem; }
+
+        /* --- CONTACT --- */
+        .contact {
+            padding: 10rem 10%;
+            text-align: center;
+            background: var(--beige);
+        }
+
+        .contact a {
+            display: block;
+            color: var(--dark-brown);
             text-decoration: none;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--butter);
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            font-weight: 200;
         }
 
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .about { grid-template-columns: 1fr; }
+            .iphone-grid-3, .iphone-main-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Hero -->
+    <nav id="navbar">
+        <div style="font-family: 'Playfair Display'; letter-spacing: 2px;">AA</div>
+        <div style="font-size: 0.8rem; letter-spacing: 2px;">MENU</div>
+    </nav>
+
+    <!-- HERO -->
     <section class="hero">
-        <h1>Aisha Abbas</h1>
-        <p>Creative Visionary</p>
-    </section>
-
-    <!-- Brands Section -->
-    <section class="brands-section">
-        <h2 class="section-title">Brands I’ve worked with</h2>
-        <div class="brands-grid">
-            <!-- Logo Bubbles -->
-            <div class="brand-bubble"><img src="image_13.png" alt="EL&N"></div>
-            <div class="brand-bubble"><img src="image_14.png" alt="Gisou"></div>
-            <div class="brand-bubble"><img src="image_18.png" alt="Ritz-Carlton"></div>
-            <div class="brand-bubble"><img src="image_22.png" alt="Dove"></div>
-            <div class="brand-bubble"><img src="image_20.png" alt="Arabica"></div>
-            <div class="brand-bubble"><img src="image_15.png" alt="Brand"></div>
-            <div class="brand-bubble"><img src="image_19.png" alt="Brand"></div>
+        <div class="reveal">
+            <h1>Aisha Abbas</h1>
         </div>
     </section>
 
-    <!-- Video Showcase -->
-    <section class="video-section">
-        <h2 class="section-title">Video Examples</h2>
-        <div class="video-container">
-            <!-- iPhone 1 -->
-            <div class="video-item">
-                <div class="iphone-frame">
-                    <img src="video_placeholder1.png" alt="Skincare Showcase">
-                </div>
-                <p class="video-label">Product Showcase / Skincare</p>
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="about-img reveal"></div>
+        <div class="about-content reveal">
+            <p>I’m a UGC content creator focused on capturing authentic, aesthetic moments that feel natural and inspiring.</p>
+            <p>I’ve explored 20+ countries across Africa, Asia, and Europe, turning real experiences into immersive, story-driven content.</p>
+            <p>I work with brands to create effortless, on-location visuals that connect with audiences and leave a lasting impression.</p>
+        </div>
+    </section>
+
+    <!-- WHY UGC -->
+    <section class="why-ugc">
+        <h2 class="reveal">People trust people.</h2>
+        <p class="reveal" style="max-width: 600px; margin: 2rem auto;">UGC is powerful because people trust people. Authentic content creates stronger connections, builds trust, and influences decisions in a natural way.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item reveal"><h3>92%</h3><p>Recommendations Look-up</p></div>
+            <div class="stat-item reveal"><h3>87%</h3><p>Brands using UGC</p></div>
+            <div class="stat-item reveal"><h3>72%</h3><p>UGC Builds Trust</p></div>
+            <div class="stat-item reveal"><h3>60%</h3><p>Trust customers over ads</p></div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio-section">
+        <div class="niche">
+            <h3 class="niche-title reveal">Travel & Hotels</h3>
+            <div class="iphone-grid-3">
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
             </div>
-            <!-- iPhone 2 -->
-            <div class="video-item">
-                <div class="iphone-frame">
-                    <img src="video_placeholder2.png" alt="Lifestyle">
-                </div>
-                <p class="video-label">Day in my life / Lifestyle</p>
+        </div>
+
+        <div class="niche">
+            <h3 class="niche-title reveal">Cafes & Restaurants</h3>
+            <div class="iphone-grid-3">
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video Content</div></div>
             </div>
-            <!-- iPhone 3 -->
-            <div class="video-item">
-                <div class="iphone-frame">
-                    <img src="video_placeholder3.png" alt="Unboxing">
-                </div>
-                <p class="video-label">Product Unboxing / Beauty</p>
+        </div>
+
+        <div class="niche">
+            <h3 class="niche-title reveal">Main Portfolio</h3>
+            <div class="iphone-main-grid">
+                <!-- 8 mockups -->
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
+                <div class="iphone-mockup reveal"><div class="placeholder">Video</div></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="contact-cta">Let's work together</div>
-        <a href="mailto:hello@aishaabbas.com" class="email-link">hello@aishaabbas.com</a>
-    </footer>
+    <!-- BRANDS -->
+    <section class="brands">
+        <h3 class="reveal">Brands I’ve worked with</h3>
+        <div class="brand-strip reveal">
+            <span>Gisou</span> <span>Wyndham</span> <span>Airbnb</span> <span>Trip.com</span>
+            <span>The Leaf</span> <span>%Arabica</span> <span>12GO</span> <span>El&N London</span>
+        </div>
+    </section>
 
+    <!-- RATES -->
+    <section class="rates">
+        <h2 class="reveal">Services & Rates</h2>
+        <div class="rate-grid">
+            <div class="rate-card reveal"><h4>€65</h4><p>Edited Video</p></div>
+            <div class="rate-card reveal"><h4>€45</h4><p>Raw Footage</p></div>
+            <div class="rate-card reveal"><h4>€180</h4><p>3 Video Bundle</p></div>
+        </div>
+        <div class="reveal" style="margin-top: 4rem; text-align: center;">
+            <p>Every package includes: Full usage rights • Delivery within 14 days • Fully edited videos • On-location shoots</p>
+        </div>
+    </section>
+
+    <!-- EXPECTATIONS -->
+    <section class="testimonials" style="background: var(--cream);">
+        <h2 class="reveal">What to expect</h2>
+        <div class="stats-grid" style="margin-top: 3rem;">
+            <div class="reveal"><h4>Fast Delivery</h4><p>Within 14 days</p></div>
+            <div class="reveal"><h4>High Quality</h4><p>Luxury Storytelling</p></div>
+            <div class="reveal"><h4>Authentic</h4><p>Natural Content</p></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonial-item reveal">
+            <div class="stars">★★★★</div>
+            <p>“Loved the content, it felt natural and elevated our brand.”</p>
+            <p style="margin-top: 1rem; font-weight: 400;">— Ema, The Leaf</p>
+        </div>
+        <div class="brand-strip reveal" style="opacity: 0.5;">
+            <span>May – Embre Locke</span> <span>Jennifer – Be Zanzibar</span> <span>Leonard – Chocolate Cafe</span>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact">
+        <h2 class="reveal">Let’s create something beautiful together.</h2>
+        <div class="reveal">
+            <a href="mailto:Aisha.ali1346@gmail.com">Aisha.ali1346@gmail.com</a>
+            <a href="tel:+971527443416">+971 52 744 3416</a>
+            <a href="https://wa.me/31687849311">WhatsApp: +31 6 87849311</a>
+        </div>
+    </section>
+
+    <script>
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("navbar").classList.add("scrolled");
+            } else {
+                document.getElementById("navbar").classList.remove("scrolled");
+            }
+        };
+
+        // Scroll Reveal Animations
+        ScrollReveal().reveal('.reveal', {
+            distance: '50px',
+            duration: 1000,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            interval: 100,
+            origin: 'bottom'
+        });
+    </script>
 </body>
 </html>
